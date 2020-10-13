@@ -38,5 +38,23 @@ This will create our cluster and we have disabled certificate checking. If you e
 #### Note: Create Cluster in Asia-southeast1. In other regions, you may encounter errors. You can run only one cluster at a time if you are a basic GCP user.
 ### 3. Creating Database on Amazon RDS
 
+https://github.com/sahanabalappa/MultiCloud-RDS/blob/main/Amazon_RDS.tf
+
 This will create our RDS database and it will be publicly accessible. You can create separate security groups and vpc for this, but I have used default one.
 Note: Source in inbound and outbound rule of sg should be set to anywhere otherwise you won't be able to connect to the database
+
+### 4. Creating deployment and Load Balancer
+
+
+
+This will create the deployment and load balancer. In end, we have written command which will start WordPress in the chrome browser.
+Now, we can run the code.
+## terraform init
+## terraform plan
+## terraform apply -auto-approve
+We can also check deployments and service running using kubectl command.
+
+
+
+
+

@@ -2,12 +2,12 @@
 
 ## Multi-Cloud: RDS on AWS and Kubernetes Cluster on GCP
 Task Description:
-####Deploy the WordPress application on Kubernetes and AWS using terraform including the following steps;
+#### Deploy the WordPress application on Kubernetes and AWS using terraform including the following steps;
 1. Write an Infrastructure as code using Terraform, which automatically deploy the WordPress application
 2. On AWS, use RDS service for the relational database for WordPress application.
 3. Deploy WordPress as a container either on top of Minikube or EKS or Fargate service on AWS
 4. The WordPress application should be accessible from the public world if deployed on AWS or through workstation if deployed on Minikube.
-####Amazon Relational Database Service (Amazon RDS):
+#### Amazon Relational Database Service (Amazon RDS):
   It's a web service that makes it easier to set up, operate, and scale a relational database in the AWS Cloud. It provides cost-efficient, resizable capacity for an industry-standard relational database and manages common database administration tasks. (from the internet)
 So, we can use Amazon RDS to create a Database. We want our WordPress to be managed my k8s to avoid downtime, for that we can either use minikube or amazon EKS service. But EKS is not very convenient to use. So, we can use the Kubernetes engine on GCP. So, this will be a Multi-Cloud Setup.
 For understanding the project, you need some prior knowledge. 
@@ -21,7 +21,7 @@ Google Cloud SDK installed
 AWS IAM User
 GCP credentials
 
-###Terraform
+### Terraform
 provider "google" {
     credentials = file("C:\\Users\\Rajnish - The Great\\Downloads\\credentials.json")
     project     = "ordinal-tower-287507"

@@ -31,44 +31,12 @@ https://github.com/sahanabalappa/MultiCloud-RDS/blob/main/main.tf
 https://github.com/sahanabalappa/MultiCloud-RDS/blob/main/vpc_gcp.tf
 
 ### 2. Creating Cluster on GCP
-resource "google_container_cluster" "gcp_cluster" {
- name               = "gcp-cluster"
- location           = "asia-southeast1"
- initial_node_count = 1
- master_auth {
-        username = ""
-        password = ""
-        client_certificate_config {
-            issue_client_certificate = false
-        }
-    }
-    node_config {
-        machine_type= "n1-standard-1"
-    }
-    network= google_compute_network.gcp_vpc.name
-    project="ordinal-tower-287507"
-    subnetwork=google_compute_subnetwork.gcp_subnet.name
-}// running the command to update the kubeconfig file
-resource "null_resource" "cluster" {
-provisioner "local-exec" {
- command ="gcloud container clusters get-credentials ${google_container_cluster.gcp_cluster.name}  --region ${google_container_cluster.gcp_cluster.location} --project ${google_container_cluster.gcp_cluster.project}"
- }
-}
+
+https://github.com/sahanabalappa/MultiCloud-RDS/blob/main/GCP_CLUSTER.tf
+
 This will create our cluster and we have disabled certificate checking. If you enable it, you have to provide the certificates otherwise you will get error x509 certificate signed by unknown authority.
-Note: Create Cluster in Asia-southeast1. In other regions, you may encounter errors. You can run only one cluster at a time if you are a basic GCP user.
+#### Note: Create Cluster in Asia-southeast1. In other regions, you may encounter errors. You can run only one cluster at a time if you are a basic GCP user.
 ### 3. Creating Database on Amazon RDS
-resource "aws_db_instance" "wp_db" {
-        allocated_storage    = 20
-        storage_type         = "gp2"
-        engine               = "mysql"
-        engine_version       = 5.7
-        instance_class       = "db.t2.micro"
-        name                 = "db"
-        username             = "admin"
-        password             = "the_great"
-        parameter_group_name = "default.mysql5.7"
-        publicly_accessible  = true
-        skip_final_snapshot  = true
- }
+
 This will create our RDS database and it will be publicly accessible. You can create separate security groups and vpc for this, but I have used default one.
 Note: Source in inbound and outbound rule of sg should be set to anywhere otherwise you won't be able to connect to the database

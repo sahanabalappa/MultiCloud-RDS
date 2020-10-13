@@ -12,14 +12,14 @@ Task Description:
 So, we can use Amazon RDS to create a Database. We want our WordPress to be managed my k8s to avoid downtime, for that we can either use minikube or amazon EKS service. But EKS is not very convenient to use. So, we can use the Kubernetes engine on GCP. So, this will be a Multi-Cloud Setup.
 For understanding the project, you need some prior knowledge. 
 ##### Before starting with the project, you should have the following things
-GCP Account
-AWS Account
-Terraform
-Kubectl command installed
-AWS CLI
-Google Cloud SDK installed
-AWS IAM User
-GCP credentials
+###### GCP Account
+###### AWS Account
+###### Terraform
+###### Kubectl command installed
+###### AWS CLI
+###### Google Cloud SDK installed
+###### AWS IAM User
+###### GCP credentials
 
 ### Terraform
 

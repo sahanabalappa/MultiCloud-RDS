@@ -28,6 +28,8 @@ https://github.com/sahanabalappa/MultiCloud-RDS/blob/main/main.tf
 #### We have written code for launching different services in different files known as modules for better management purposes.
 ## 1. Creating VPC, Subnet, and Firewall in GCP
 
+https://github.com/sahanabalappa/MultiCloud-RDS/blob/main/vpc_gcp.tf
+
 ### 2. Creating Cluster on GCP
 resource "google_container_cluster" "gcp_cluster" {
  name               = "gcp-cluster"

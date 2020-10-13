@@ -45,7 +45,7 @@ Note: Source in inbound and outbound rule of sg should be set to anywhere otherw
 
 ### 4. Creating deployment and Load Balancer
 
-
+https://github.com/sahanabalappa/MultiCloud-RDS/blob/main/Deployment_LB.tf
 
 This will create the deployment and load balancer. In end, we have written command which will start WordPress in the chrome browser.
 Now, we can run the code.

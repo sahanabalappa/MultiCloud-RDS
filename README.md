@@ -2,12 +2,12 @@
 
 ## Multi-Cloud: RDS on AWS and Kubernetes Cluster on GCP
 Task Description:
-#### Deploy the WordPress application on Kubernetes and AWS using terraform including the following steps;
+### Deploy the WordPress application on Kubernetes and AWS using terraform including the following steps;
 1. Write an Infrastructure as code using Terraform, which automatically deploy the WordPress application
 2. On AWS, use RDS service for the relational database for WordPress application.
 3. Deploy WordPress as a container either on top of Minikube or EKS or Fargate service on AWS
 4. The WordPress application should be accessible from the public world if deployed on AWS or through workstation if deployed on Minikube.
-#### Amazon Relational Database Service (Amazon RDS):
+### Amazon Relational Database Service (Amazon RDS):
   It's a web service that makes it easier to set up, operate, and scale a relational database in the AWS Cloud. It provides cost-efficient, resizable capacity for an industry-standard relational database and manages common database administration tasks. (from the internet)
 So, we can use Amazon RDS to create a Database. We want our WordPress to be managed my k8s to avoid downtime, for that we can either use minikube or amazon EKS service. But EKS is not very convenient to use. So, we can use the Kubernetes engine on GCP. So, this will be a Multi-Cloud Setup.
 For understanding the project, you need some prior knowledge. 
@@ -23,33 +23,11 @@ GCP credentials
 
 ### Terraform
 
-    
-### We have written code for launching different services in different files known as modules for better management purposes.
+https://github.com/sahanabalappa/MultiCloud-RDS/blob/main/main.tf
+
+#### We have written code for launching different services in different files known as modules for better management purposes.
 ## 1. Creating VPC, Subnet, and Firewall in GCP
-// create a VPC
-resource "google_compute_network" "gcp_vpc" {
- name =  "gcp-vpc"
- auto_create_subnetworks=false
- project= "ordinal-tower-287507"
-}// create a subnetwork
-resource "google_compute_subnetwork" "gcp_subnet" {
-    name          = "gcp-subnet"
- ip_cidr_range = "10.0.2.0/24"
- region        = "asia-southeast1"
- network       = google_compute_network.gcp_vpc.id
-}// create a firewall
-resource "google_compute_firewall" "default" {
- name    = "gcp-firewall"
- network = google_compute_network.gcp_vpc.name
- allow {
-        protocol = "icmp"
- }
- allow {
-        protocol = "tcp"
-        ports    = ["80","22"]
- }
-}
-This will create a VPC, subnet, and firewall for launching the k8s cluster.
+
 ### 2. Creating Cluster on GCP
 resource "google_container_cluster" "gcp_cluster" {
  name               = "gcp-cluster"
